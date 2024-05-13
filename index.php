@@ -25,9 +25,9 @@
 			<!-- MAIN -->
 			<div id="main" class="col-md-12">
 
-			<div class="selik">
-        <div>
-            <img src="frontend/img/banner.jpg">
+		 <section class="slider">
+			<div>
+            <img src="frontend/img/banner.png">
         </div>
         <div>
             <img src="frontend/img/banner0.png">
@@ -38,16 +38,19 @@
 		<div>
             <img src="frontend/img/banner04.png">
         </div>
-    </div>
+</section>
+
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script src="slick//slick/slick.min.js"></script>
+    <script src="slick/slick/slick.min.js"></script>
     <script>
       $(document).ready(function() {
-    $('.selik').slick({
-        autoplay: true,
+    $(".slider").slick({
+		dots: true,
+		autoplay: true,
         autoplaySpeed: 3000,
-        dots: true, // Menampilkan titik navigasi
-    });
+		lazyLoad: 'ondemand', // ondemand progressive anticipated
+        infinite: true
+      });
 });
     </script>
 

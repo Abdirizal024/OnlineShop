@@ -28,12 +28,40 @@
 	<!-- Custom stlylesheet -->
 	<link type="text/css" rel="stylesheet" href="frontend/css/style.css" />
 
-	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
-	<!-- Owl Carousel CSS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+	<link rel="stylesheet" type="text/css" href="slick/slick/slick.css">
+  <link rel="stylesheet" type="text/css" href="slick/slick-theme.css">
 <style>
+	.slider {
+        width: 70%;
+        margin: 100px auto;
+    }
+
+    .slick-slide {
+      margin: 0px 20px;
+    }
+
+    .slick-slide img {
+      width: 100%;
+    }
+
+    .slick-prev:before,
+    .slick-next:before {
+      color: gray;
+    }
+
+
+    .slick-slide {
+      transition: all ease-in-out .3s;
+      opacity: .2;
+    }
+    
+    .slick-active {
+      opacity: .5;
+    }
+
+    .slick-current {
+      opacity: 1;
+    }
 	.selik
         {
             width: 80%;
@@ -313,22 +341,39 @@ if($file == "checkout.php"){
 		<!-- container -->
 		<div class="container">
 			<div id="responsive-nav">
-				<!-- category nav -->
-				<div class="category-nav show-on-click">
-					<span class="category-header">Kategori Produk Jurusan<i class="fa fa-list"></i></span>
-					<ul class="category-list">
-						<?php 
-						$data = mysqli_query($koneksi,"SELECT * FROM kategori");
-						while($d = mysqli_fetch_array($data)){
-							?>
-							<li><a href="produk_kategori.php?id=<?php echo $d['kategori_id']; ?>"><?php echo $d['kategori_nama']; ?></a></li>
-							<?php 
-						}
-						?>
-						<li style="background: #999;"><a href="index.php" style="color: white">Tampilkan Semua</a></li>
-					</ul>
-				</div>
-				<!-- /category nav -->
+				<!-- Pastikan jQuery telah dimuat sebelumnya -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+				       <!-- category nav -->
+        <div class="category-nav show-on-click">
+            <span class="category-header">Kategori Produk Jurusan<i class="fa fa-list"></i></span>
+            <ul class="category-list">
+                <?php 
+                // Tampilkan 4 kategori pertama
+                $data = mysqli_query($koneksi, "SELECT * FROM kategori LIMIT 4");
+                while($d = mysqli_fetch_array($data)){
+                    ?>
+                    <li><a href="produk_kategori.php?id=<?php echo $d['kategori_id']; ?>"><?php echo $d['kategori_nama']; ?></a></li>
+                    <?php 
+                }
+                ?>
+                <!-- Tampilkan Semua -->
+                <li style="background: #999;"><a href="#" class="show-all-link" style="color: white">Tampilkan Semua</a></li>
+            </ul>
+        </div>
+        <!-- /category nav -->
+		<script>
+    $(document).ready(function(){
+        // Ketika link "Tampilkan Semua" diklik
+        $(".show-all-link").click(function(e){
+            e.preventDefault(); // Menghentikan perilaku default dari link
+
+            // Ambil semua kategori dan tambahkan ke daftar kategori
+            $.get("get_all_categories.php", function(data){
+                $(".category-list").html(data);
+            });
+        });
+    });
+</script>
 
 				<!-- menu nav -->
 				<div class="menu-nav">
