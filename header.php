@@ -13,6 +13,8 @@
 
 	<!-- Bootstrap -->
 	<link type="text/css" rel="stylesheet" href="frontend/css/bootstrap.min.css" />
+
+	<link rel="icon" href="frontend/img/favicon.png" type="image/x-icon">
 	
 
 	<!-- Slick -->
