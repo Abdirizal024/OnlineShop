@@ -22,7 +22,7 @@ if($cek > 0){
 	// buat session customer
 	$_SESSION['customer_id'] = $data['customer_id'];
 	$_SESSION['customer_status'] = "login";
-	header("location:customer.php");
+	header("location:index.php");
 }else{
 	header("location:masuk.php?alert=gagal");
 }

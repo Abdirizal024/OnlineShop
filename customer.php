@@ -5,7 +5,7 @@
 	<div class="container">
 		<ul class="breadcrumb">
 			<li><a href="index.php">Beranda</a></li>
-			<li class="active">Dashboard Customer</li>
+			<li class="active">Profil Customer</li>
 		</ul>
 	</div>
 </div>
@@ -21,7 +21,7 @@
 
 			<div id="main" class="col-md-9">
 				
-				<h4>DASHBOARD</h4>
+				<h4>PROFIL</h4>
 
 				<div id="store">
 
