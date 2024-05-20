@@ -48,7 +48,7 @@
 								Nama Customer : <?php echo $i['invoice_nama']; ?><br/>
 								Alamat Tujuan : <?php echo $i['invoice_alamat']; ?><br/>
 								Provinsi : <?php echo $i['invoice_provinsi']; ?><br/>
-								Kabupaten : <?php echo $i['invoice_kabupaten']; ?><br/>
+								Kota/Kabupaten : <?php echo $i['invoice_kabupaten']; ?><br/>
 								No Hp Customer : <?php echo $i['invoice_hp']; ?><br/>
 								<br/>
 								<br/>
