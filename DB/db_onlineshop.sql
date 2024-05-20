@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 13 Bulan Mei 2024 pada 04.46
+-- Waktu pembuatan: 20 Bulan Mei 2024 pada 09.16
 -- Versi server: 10.4.28-MariaDB
 -- Versi PHP: 8.2.4
 
@@ -63,7 +63,7 @@ CREATE TABLE `customer` (
 --
 
 INSERT INTO `customer` (`customer_id`, `customer_nama`, `customer_email`, `customer_hp`, `customer_alamat`, `customer_password`) VALUES
-(1, 'Abdi Rizal', 'abdibjm023@gmail.com', '085654800639', 'Jln. H Hasan Basri Komplek Simpng Gusti 5 RT 32 no.123 kayu Tangi ujung Banjarmasin', '12345'),
+(1, 'Edong', 'edong@gmail.com', '085654800639', 'Jln. H Hasan Basri Komplek Simpng Gusti 5 RT 32 no.123 kayu Tangi ujung Banjarmasin', '12345'),
 (8, 'Jamal Udin', 'jamal023@gmail.com', '085635456353', 'kayu tangi', 'jamal123');
 
 -- --------------------------------------------------------
@@ -99,7 +99,12 @@ INSERT INTO `invoice` (`invoice_id`, `invoice_tanggal`, `invoice_customer`, `inv
 (6, '2019-06-13', 5, 'Jamaika Bob', '08272263637', 'Jalan Pentolan Nomor 1C, Rasta mania', 'Maluku', 'Maluku Tenggara', 'JNE - OKE', 300, 108000, 808500, 3, '', '577813088.jpg'),
 (7, '2019-06-14', 6, 'Rosalina / Ibu Ros', '08282723833', 'jalan mewawaw nomor 34 A. Komplek Pertamburan,', 'Kalimantan Utara', 'Nunukan', 'Pos Indonesia - Paket Kilat Khusus', 200, 71500, 351500, 5, '', '2001382847.jpg'),
 (8, '2019-07-25', 7, 'Suleha', '0897273737383', 'jalan merpati putih nomor 21, surabaya', 'Banten', 'Pandeglang', 'Pos Indonesia - Paket Kilat Khusus', 200, 13000, 353000, 5, '', '1048853755.jpg'),
-(9, '2019-11-04', 8, 'INDRA RAHMAWAN', '081382789716', 'CV. JAPAINDO, Jl. Poris Indah Raya No.120, RT.003/RW.010, Cipondoh Indah, Kec. Cipondoh, Kota Tangerang, Banten 15148', 'Banten', 'Tangerang', 'JNE - OKE', 100, 8000, 88000, 3, '', '65137952.jpg');
+(9, '2019-11-04', 8, 'INDRA RAHMAWAN', '081382789716', 'CV. JAPAINDO, Jl. Poris Indah Raya No.120, RT.003/RW.010, Cipondoh Indah, Kec. Cipondoh, Kota Tangerang, Banten 15148', 'Banten', 'Tangerang', 'JNE - OKE', 100, 8000, 88000, 0, '', '65137952.jpg'),
+(10, '2024-05-13', 1, '1234567', '3242', 'huj', 'Kalimantan Selatan', 'Banjarmasin', 'Pos Indonesia - Pos Reguler', 110, 40000, 185000, 1, '', '95195378.jpg'),
+(11, '2024-05-13', 1, 'Nupal', '0312031023', 'htt', 'Lampung', 'Tulang Bawang', 'JNE - OKE', 100, 28000, 148000, 0, '', ''),
+(12, '2024-05-20', 1, 'nufal', '085656535434', 'hksn', 'Kalimantan Selatan', 'Banjarmasin', 'Pos Indonesia - Pos Reguler', 100, 40000, 170000, 3, '', '1697738647.png'),
+(13, '2024-05-20', 1, 'nawfal jago', '0856574774', 'hksn', 'Kalimantan Selatan', 'Banjarmasin', 'Pos Indonesia - Pos Reguler', 10, 40000, 55000, 0, '', '816865583.jpg'),
+(14, '2024-05-20', 1, 'rahman', '0856787585', 'Sksnsn', 'Kalimantan Selatan', 'Banjarmasin', 'Pos Indonesia - Pos Reguler', 100, 40000, 280000, 3, '', '887226002.jpg');
 
 -- --------------------------------------------------------
 
@@ -143,22 +148,24 @@ CREATE TABLE `produk` (
   `produk_berat` int(11) NOT NULL,
   `produk_foto1` varchar(255) DEFAULT NULL,
   `produk_foto2` varchar(255) DEFAULT NULL,
-  `produk_foto3` varchar(255) DEFAULT NULL
+  `produk_foto3` varchar(255) DEFAULT NULL,
+  `jumlah_penjualan` int(11) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data untuk tabel `produk`
 --
 
-INSERT INTO `produk` (`produk_id`, `produk_nama`, `produk_kategori`, `produk_harga`, `produk_keterangan`, `produk_jumlah`, `produk_berat`, `produk_foto1`, `produk_foto2`, `produk_foto3`) VALUES
-(6, 'Celana Tenun Dingin', 4, 200000, 'Sangat cocok untuk yang ingin tampil cantik. tersedia ukuran xl, xlx<br>', 10, 100, '1677114666_02274f49979c5062b85f01fbd51b256b.jpg', '1677114666_celana-tenun-asli-nusantara-001.jpg', '1677114666_celana-tenun-asli-nusantara-0016.jpg'),
-(7, 'Sepatu Tenun Cantik', 6, 240000, '<p>Bla bla bla silahkan isi deskripsi keterangannya di sini<br></p>', 30, 100, '1902776456_3527635_670cf55c-fb40-4409-890a-4b7fa528cae1_1280_1280.jpg', '1902776456_sepatu_oke_210.jpg', ''),
-(8, 'Baju Tenun Motif Baru', 3, 80000, '<p>Keren bla bla<br></p>', 2, 100, '1716291419_0_cba4a579-4fd2-41e4-9385-fb2d943ef134_720_701.jpg', '', ''),
-(9, 'Celana Aladin Kain Tenun', 4, 300500, '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod<br>tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,<br>quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo<br>consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse<br>cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non<br>proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br></p>', 4, 200, '986206747_CT84_2U.jpg', '986206747_CT83_1.jpg', ''),
-(10, 'Celana Tenun Cewek Berkualitas', 4, 400000, '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod<br>tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,<br>quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo<br>consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse<br>cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non<br>proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br></p>', 4, 100, '1517011641_CT82_1U.jpg', '', ''),
-(11, 'Kain Tenun Untuk Baju', 3, 80000, '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod<br>tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,<br>quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo<br>consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse<br>cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non<br>proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br></p>', 20, 100, '611138101_Bahan_Pakaian_Tenun_Kain_Tenun_Ikat_Bali_CSM_05.jpg', '', ''),
-(12, 'Baju Daster Tenun', 3, 120000, '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod<br>tempor incididunt ut labore et dolore mag Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod<br>tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,<br>quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo<br>consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse<br>cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non<br>proident, sunt in culpa qui officia deserunt mollit anim id est laborum. na aliqua. Ut enim ad minim veniam,<br>quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo<br>consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse<br>cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non<br>proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br></p>', 2, 100, '1602884192_Dress_Etnik_Unik_Tenun_Troso_Jepara_Motif_Batik_Toraja.jpg', '1602884192_e3b4e643b1a98e2cdc24fee8202ad381.jpg', ''),
-(13, 'Baju daster bahan tenun', 3, 130000, '<p>Sangat cocok untuk dipakai kemana-mana..<br>isi deskripsi produk di <b><i></i></b><i></i>sini<i></i></p>', 20, 100, '1347063537_tenundaster.jpg', '', '');
+INSERT INTO `produk` (`produk_id`, `produk_nama`, `produk_kategori`, `produk_harga`, `produk_keterangan`, `produk_jumlah`, `produk_berat`, `produk_foto1`, `produk_foto2`, `produk_foto3`, `jumlah_penjualan`) VALUES
+(6, 'Celana Tenun Dingin', 4, 200000, 'Sangat cocok untuk yang ingin tampil cantik. tersedia ukuran xl, xlx<br>', 10, 100, '1677114666_02274f49979c5062b85f01fbd51b256b.jpg', '1677114666_celana-tenun-asli-nusantara-001.jpg', '1677114666_celana-tenun-asli-nusantara-0016.jpg', 0),
+(7, 'Sepatu Tenun Cantik', 6, 240000, '<p>Bla bla bla silahkan isi deskripsi keterangannya di sini<br></p>', 30, 100, '1902776456_3527635_670cf55c-fb40-4409-890a-4b7fa528cae1_1280_1280.jpg', '1902776456_sepatu_oke_210.jpg', '', 0),
+(8, 'Baju Tenun Motif Baru', 3, 80000, '<p>Keren bla bla<br></p>', 2, 100, '1716291419_0_cba4a579-4fd2-41e4-9385-fb2d943ef134_720_701.jpg', '', '', 0),
+(9, 'Celana Aladin Kain Tenun', 4, 300500, '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod<br>tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,<br>quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo<br>consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse<br>cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non<br>proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br></p>', 4, 200, '986206747_CT84_2U.jpg', '986206747_CT83_1.jpg', '', 0),
+(10, 'Celana Tenun Cewek Berkualitas', 4, 400000, '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod<br>tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,<br>quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo<br>consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse<br>cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non<br>proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br></p>', 4, 100, '1517011641_CT82_1U.jpg', '', '', 0),
+(11, 'Kain Tenun Untuk Baju', 3, 80000, '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod<br>tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,<br>quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo<br>consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse<br>cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non<br>proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br></p>', 20, 100, '611138101_Bahan_Pakaian_Tenun_Kain_Tenun_Ikat_Bali_CSM_05.jpg', '', '', 0),
+(12, 'Baju Daster Tenun', 3, 120000, '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod<br>tempor incididunt ut labore et dolore mag Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod<br>tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,<br>quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo<br>consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse<br>cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non<br>proident, sunt in culpa qui officia deserunt mollit anim id est laborum. na aliqua. Ut enim ad minim veniam,<br>quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo<br>consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse<br>cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non<br>proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br></p>', 2, 100, '1602884192_Dress_Etnik_Unik_Tenun_Troso_Jepara_Motif_Batik_Toraja.jpg', '1602884192_e3b4e643b1a98e2cdc24fee8202ad381.jpg', '', 0),
+(13, 'Baju daster bahan tenun', 3, 130000, '<p>Sangat cocok untuk dipakai kemana-mana..<br>isi deskripsi produk di <b><i></i></b><i></i>sini<i></i></p>', 20, 100, '1347063537_tenundaster.jpg', '', '', 0),
+(14, 'Stiker Vinly', 7, 15000, '<p>Stiker Ini Desain nya Bagus</p>', 10, 10, '174402145_animasi.jpg', '174402145_animasi1.jpg', '174402145_animasi2.jpg', 0);
 
 -- --------------------------------------------------------
 
@@ -196,7 +203,13 @@ INSERT INTO `transaksi` (`transaksi_id`, `transaksi_invoice`, `transaksi_produk`
 (17, 7, 12, 1, 120000),
 (18, 8, 13, 2, 130000),
 (19, 8, 11, 1, 80000),
-(20, 9, 11, 1, 80000);
+(20, 9, 11, 1, 80000),
+(21, 10, 14, 1, 15000),
+(22, 10, 13, 1, 130000),
+(23, 11, 12, 1, 120000),
+(24, 12, 13, 1, 130000),
+(25, 13, 14, 1, 15000),
+(26, 14, 7, 1, 240000);
 
 --
 -- Indexes for dumped tables
@@ -258,7 +271,7 @@ ALTER TABLE `customer`
 -- AUTO_INCREMENT untuk tabel `invoice`
 --
 ALTER TABLE `invoice`
-  MODIFY `invoice_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `invoice_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT untuk tabel `kategori`
@@ -270,13 +283,13 @@ ALTER TABLE `kategori`
 -- AUTO_INCREMENT untuk tabel `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `produk_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `produk_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT untuk tabel `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `transaksi_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `transaksi_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
