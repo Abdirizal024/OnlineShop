@@ -49,74 +49,76 @@
 
 
 							<div class="table-responsive">
-								<table class="table table-bordered">
-									<thead>
-										<tr>
-											<th>NO</th>
-											<th>No.Invoice</th>
-											<th>Tanggal</th>
-											<th>Nama Penerima</th>
-											<th>Total Bayar</th>
-											<th class="text-center">Status</th>
-											<th class="text-center">OPSI</th>
-										</tr>
-									</thead>
-									<tbody>
-										<?php 
-										$id = $_SESSION['customer_id'];
-										$invoice = mysqli_query($koneksi,"select * from invoice where invoice_customer='$id' order by invoice_id desc");
-										while($i = mysqli_fetch_array($invoice)){
-											?>
-											<tr>
-												<td><?php echo $i['invoice_id'] ?></td>
-												<td>INVOICE-00<?php echo $i['invoice_id'] ?></td>
-												<td><?php echo $i['invoice_tanggal'] ?></td>
-												<td><?php echo $i['invoice_nama'] ?></td>
-												<td><?php echo "Rp. ".number_format($i['invoice_total_bayar'])." ,-" ?></td>
-												<td class="text-center">
-													<?php 
-													if($i['invoice_status'] == 0){
-														echo "<span class='label label-warning'>Menunggu Pembayaran</span>";
-													}elseif($i['invoice_status'] == 1){
-														echo "<span class='label label-default'>Menunggu Konfirmasi</span>";
-													}elseif($i['invoice_status'] == 2){
-														echo "<span class='label label-danger'>Ditolak</span>";
-													}elseif($i['invoice_status'] == 3){
-														echo "<span class='label label-primary'>Dikonfirmasi & Sedang Diproses</span>";
-													}elseif($i['invoice_status'] == 4){
-														echo "<span class='label label-warning'>Dikirim</span>";
-													}elseif($i['invoice_status'] == 5){
-														echo "<span class='label label-success'>Selesai</span>";
-													}
-													?>
-												</td>
-												<td class="text-center">
-													<?php 
-													if($i['invoice_status'] == 0){
-														?>
-														<a class='btn btn-sm btn-primary' href="customer_pembayaran.php?id=<?php echo $i['invoice_id']; ?>"><i class="fa fa-money"></i> Konfirmasi Pembayaran</a>
-														<?php
-													}elseif($i['invoice_status'] == 1){
-														?>
-														<a class='btn btn-sm btn-primary' href="customer_pembayaran.php?id=<?php echo $i['invoice_id']; ?>"><i class="fa fa-money"></i> Konfirmasi Pembayaran</a>
-														<?php
-													}
-													?>
-													<a class='btn btn-sm btn-success' href="customer_invoice.php?id=<?php echo $i['invoice_id']; ?>"><i class="fa fa-print"></i> Invoice</a>
-												</td>
-											</tr>
-											<?php 
-										}
-										?>
-									</tbody>
-								</table>
-							</div>
-							
-
-
-						</div>	
-
-					</div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>NO</th>
+                <th>No. Invoice</th>
+                <th>Tanggal</th>
+                <th>Nama Produk</th>
+                <th>Nama Penerima</th>
+                <th>Total Bayar</th>
+                <th class="text-center">Status</th>
+                <th class="text-center">OPSI</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php 
+            $id = $_SESSION['customer_id'];
+            $invoice = mysqli_query($koneksi, "SELECT invoice.*, produk.produk_nama 
+                                               FROM invoice 
+                                               INNER JOIN transaksi ON invoice.invoice_id = transaksi.transaksi_invoice 
+                                               INNER JOIN produk ON transaksi.transaksi_produk = produk.produk_id 
+                                               WHERE invoice.invoice_customer = '$id' 
+                                               ORDER BY invoice.invoice_id DESC");
+            $no = 1;
+            while($i = mysqli_fetch_array($invoice)){
+                ?>
+                <tr>
+                    <td><?php echo $no++; ?></td>
+                    <td>INVOICE-00<?php echo $i['invoice_id']; ?></td>
+                    <td><?php echo $i['invoice_tanggal']; ?></td>
+                    <td><?php echo $i['produk_nama']; ?></td>
+                    <td><?php echo $i['invoice_nama']; ?></td>
+                    <td><?php echo "Rp. ".number_format($i['invoice_total_bayar'])." ,-"; ?></td>
+                    <td class="text-center">
+                        <?php 
+                        if($i['invoice_status'] == 0){
+                            echo "<span class='label label-warning'>Menunggu Pembayaran</span>";
+                        } elseif($i['invoice_status'] == 1){
+                            echo "<span class='label label-default'>Menunggu Konfirmasi</span>";
+                        } elseif($i['invoice_status'] == 2){
+                            echo "<span class='label label-danger'>Ditolak</span>";
+                        } elseif($i['invoice_status'] == 3){
+                            echo "<span class='label label-primary'>Dikonfirmasi & Diproses</span>";
+                        } elseif($i['invoice_status'] == 4){
+                            echo "<span class='label label-warning'>Dikirim</span>";
+                        } elseif($i['invoice_status'] == 5){
+                            echo "<span class='label label-success'>Selesai</span>";
+                        }
+                        ?>
+                    </td>
+                    <td class="text-center">
+                        <?php 
+                        if($i['invoice_status'] == 0){
+                            ?>
+                            <a class='btn btn-sm btn-primary' href="customer_pembayaran.php?id=<?php echo $i['invoice_id']; ?>"><i class="fa fa-money"></i> Konfirmasi Pembayaran</a>
+                            <?php
+                        } elseif($i['invoice_status'] == 1){
+                            ?>
+                            <a class='btn btn-sm btn-primary' href="customer_pembayaran.php?id=<?php echo $i['invoice_id']; ?>"><i class="fa fa-money"></i> Konfirmasi Pembayaran</a>
+                            <?php
+                        }
+                        ?>
+                        <a class='btn btn-sm btn-success' href="customer_invoice.php?id=<?php echo $i['invoice_id']; ?>"><i class="fa fa-print"></i> Invoice</a>
+                    </td>
+                </tr>
+                <?php 
+            }
+            ?>
+        </tbody>
+    </table>
+</div>
 				</div>
 
 			</div>

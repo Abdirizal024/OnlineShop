@@ -98,11 +98,11 @@ if (!isset($_SESSION['sapaan_shown'])) {
     $sapaan = "";
     $jam = date("H");
     if ($jam < 12) {
-        $sapaan = "Selamat Pagi, dan Selamat Datang juga di Dashboard E - Gallery Proyek Siswa";
+        $sapaan = "Selamat Pagi, dan Selamat Datang juga di Dashboard";
     } elseif ($jam < 18) {
-        $sapaan = "Selamat Siang, dan Selamat Datang juga di Dashboard E - Gallery Proyek Siswa";
+        $sapaan = "Selamat Siang, dan Selamat Datang juga di Dashboard";
     } else {
-        $sapaan = "Selamat Malam, dan Selamat Datang juga di Dashboard E - Gallery Proyek Siswa";
+        $sapaan = "Selamat Malam, dan Selamat Datang juga di Dashboard";
     }
 
     // Simpan informasi bahwa sapaan sudah ditampilkan ke dalam session

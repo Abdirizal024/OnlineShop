@@ -6,7 +6,7 @@
   <title>Dashboard Admin - Toko Online Gallery Proyek Siswa</title>
   
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <link rel="icon" href="../frontend/img/favicon.png" type="image/x-icon">
+  <link rel="icon" href="../frontend/img/l2.png" type="image/x-icon">
   <link rel="stylesheet" href="../assets/bower_components/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="../assets/bower_components/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" href="../assets/bower_components/Ionicons/css/ionicons.min.css">
@@ -21,7 +21,18 @@
   <link rel="stylesheet" href="../assets/bower_components/bootstrap-daterangepicker/daterangepicker.css">
   <link rel="stylesheet" href="../assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-
+<style>
+  .table-responsive {
+        overflow-x: auto;
+    }
+    .table th, .table td {
+        white-space: nowrap;
+    }
+    .table th {
+        width: 1%;
+        white-space: nowrap;
+    }
+</style>
   <?php 
   include '../koneksi.php';
   session_start();

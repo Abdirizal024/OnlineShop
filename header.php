@@ -14,7 +14,7 @@
 	<!-- Bootstrap -->
 	<link type="text/css" rel="stylesheet" href="frontend/css/bootstrap.min.css" />
 
-	<link rel="icon" href="frontend/img/favicon.png" type="image/x-icon">
+	<link rel="icon" href="frontend/img/l.png" type="image/x-icon">
 	
 
 	<!-- Slick -->
@@ -25,7 +25,7 @@
 	<link type="text/css" rel="stylesheet" href="frontend/css/nouislider.min.css" />
 
 	<!-- Font Awesome Icon -->
-	<link rel="stylesheet" href="frontend/css/font-awesome.min.css">
+	<link rel="stylesheet" href="./frontend/css/font-awesome.min.css">
 
 	<!-- Custom stlylesheet -->
 	<link type="text/css" rel="stylesheet" href="frontend/css/style.css" />
@@ -33,6 +33,16 @@
 	<link rel="stylesheet" type="text/css" href="slick/slick/slick.css">
   <link rel="stylesheet" type="text/css" href="slick/slick-theme.css">
 <style>
+	.table-responsive {
+        overflow-x: auto;
+    }
+    .table th, .table td {
+        white-space: nowrap;
+    }
+    .table th {
+        width: 1%;
+        white-space: nowrap;
+    }
 	.slider {
         width: 70%;
         margin: 100px auto;

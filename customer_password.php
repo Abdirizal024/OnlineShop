@@ -5,7 +5,7 @@
 <div id="breadcrumb">
 	<div class="container">
 		<ul class="breadcrumb">
-			<li><a href="index.php">Home</a></li>
+			<li><a href="index.php">Beranda</a></li>
 			<li class="active">Ganti Password Customer</li>
 		</ul>
 	</div>
