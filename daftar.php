@@ -6,7 +6,7 @@
 <div id="breadcrumb">
 	<div class="container">
 		<ul class="breadcrumb">
-			<li><a href="index.php">Beranda</a></li>
+			<li><a href="index.php">Beranda</a></li> 
 			<li class="active">Daftar Customer</li>
 		</ul>
 	</div>

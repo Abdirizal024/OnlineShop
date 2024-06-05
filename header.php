@@ -193,7 +193,7 @@ if($file == "checkout.php"){
 					<!-- Logo -->
 					<div class="header-logo text-center">
 						<a class="logo" href="#">
-							<h3>E - GALLERY PROYEK SISWA <br> SKENDA</h3>
+							<h3>E - GALLERY PROYEK SISWA <br> SKENDA </h3>
 						</a>
 					</div>
 					<!-- /Logo -->
